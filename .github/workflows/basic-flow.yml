@@ -13,10 +13,7 @@ jobs:
           who-to-greet: I am not a cat
       - name: using a local repo action... remotely
         # no need to checkout code due to being referenced remotely, rather than privately (with a "relative" path)
-        uses: |
-          neebs12/github-actions-practise
-          /.github/actions/private-action1
-          @github-actions-test
+        uses: neebs12/github-actions-practise/.github/actions/private-action1@github-actions-test
         with:
           my-variable: jaszoon232 - local && remotely
       - name: Checkout repo code
