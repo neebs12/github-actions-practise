@@ -1,0 +1,17 @@
+name: My First Flow
+run-name: ${{github.actor}} is discovering Github Actions!!
+
+on: [push]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Starting my first job!!, running ${{ runner.os }}"
+      - name: Checkout repo code
+        uses: actions/checkout@v3
+      - run: echo "The repo has been cloned!!!, see contents of dir"
+      - name: List dir files
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "We can not test your code"
+      - run: echo "Job(1)'s status is ${{ job.status }}"
