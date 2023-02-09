@@ -34,7 +34,10 @@ jobs:
         if: ${{ failure() }}
         run: |
           echo "Run cleanup"
-      - run: echo "Job(1)'s status is ${{ job.status }}"
+      - name: Show job status
+        if: ${{ always() }}
+        run: |
+          echo "Job(1)'s status is ${{ job.status }}"
 
   on-failure:
     if: ${{ failure() }}
