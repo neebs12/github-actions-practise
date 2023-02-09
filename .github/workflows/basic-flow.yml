@@ -11,13 +11,13 @@ jobs:
         uses: neebs12/github-actions-practise-2@main
         with:
           who-to-greet: I am not a cat
-      - run: echo "Starting my first job!!, running ${{ runner.os }}"
-      - name: setting up environment (checking out repo)
-        uses: actions/checkout@v3
-      - run: |
-          ls ${{ github.workspace }}
+      # - run: echo "Starting my first job!!, running ${{ runner.os }}"
+      # - name: setting up environment (checking out repo)
+      #   uses: actions/checkout@v3
+      # - run: |
+      #     ls ${{ github.workspace }}
       - name: using a private action
-        uses: ./.github/actions/private-action1
+        uses: neebs12/github-actions-practise@github-actions-test/.github/actions/private-action1
         with:
           my-variable: jaszoon232
 
