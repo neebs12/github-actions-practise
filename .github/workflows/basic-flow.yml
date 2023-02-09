@@ -30,6 +30,10 @@ jobs:
         # continue-on-error: true
         run: |
           npm run test:fail
+      - name: Cleanup
+        if: ${{ failure() }}
+        run: |
+          echo "Run cleanup"
       - run: echo "Job(1)'s status is ${{ job.status }}"
 
   on-failure:
