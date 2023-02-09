@@ -11,13 +11,21 @@ jobs:
         uses: neebs12/github-actions-practise-2@main
         with:
           who-to-greet: I am not a cat
-      - name: using a private action
+      - name: using a local repo action... remotely
+        # no need to checkout code due to being referenced remotely, rather than privately (with a "relative" path)
         uses: |
           neebs12/github-actions-practise
           /.github/actions/private-action1
           @github-actions-test
         with:
-          my-variable: jaszoon232
+          my-variable: jaszoon232 - local && remotely
+      - name: Checkout repo code
+        uses: actions/checkout@v3
+      - name: using a local repo action... privately
+        # precursor of checkout is required!
+        uses: ${{ github.workspace }}/.github/actions/private-action1
+        with:
+          my-variable: jaszoon232 - local && privately
 
   #     - name: Checkout repo code
   #       uses: actions/checkout@v3
