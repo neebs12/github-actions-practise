@@ -27,7 +27,7 @@ jobs:
         run: |
           npm run test
       - name: "Running a failing test in jest"
-        continue-on-error: true
+        # continue-on-error: true
         run: |
           npm run test:fail
       - run: echo "Job(1)'s status is ${{ job.status }}"
