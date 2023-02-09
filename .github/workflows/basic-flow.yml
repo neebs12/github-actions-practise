@@ -17,7 +17,7 @@ jobs:
       # - run: |
       #     ls ${{ github.workspace }}
       - name: using a private action
-        uses: neebs12/github-actions-practise@github-actions-test/.github/actions/private-action1
+        uses: neebs12/github-actions-practise/.github/actions/private-action1@github-actions-test
         with:
           my-variable: jaszoon232
 
