@@ -13,5 +13,8 @@ jobs:
       - name: List dir files
         run: |
           ls ${{ github.workspace }}
-      - run: echo "We can not test your code"
+      - run: echo "We can test your code"
+      - name: Running a test in jest
+        run: |
+          npm run test
       - run: echo "Job(1)'s status is ${{ job.status }}"
