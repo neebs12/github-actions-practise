@@ -8,51 +8,56 @@ jobs:
 
     steps:
       - run: echo "Starting my first job!!, running ${{ runner.os }}"
-      - name: Checkout repo code
-        uses: actions/checkout@v3
-      - run: echo "The repo has been cloned!!!, see contents of dir"
-      - name: List dir files
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "setting up my environment!"
-      - name: setup environment in node.js version ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-      - run: echo "installing deps"
-      - name: dependency installation - clean install
-        run: npm ci
-      - run: echo "We can test your code"
-      - name: Running a test in jest
-        run: |
-          npm run test
-      - name: "Running a failing test in jest"
-        # continue-on-error: true
-        run: |
-          npm run test:fail
-      - name: Cleanup
-        if: ${{ failure() }}
-        run: |
-          echo "Run cleanup"
-      - name: Show job status
-        if: ${{ always() }}
-        run: |
-          echo "Job(1)'s status is ${{ job.status }}"
+      - name: using a remote action
+        uses: neebs12/github-actions-practise-2@main/.github/actions/hello-world-action
+          with: 
+            who-to-greet: I am not a cat
 
-  on-failure:
-    if: ${{ failure() }}
-    runs-on: ubuntu-latest
-    needs: preliminary
-    steps:
-      - name: "on-failure step 1!!"
-        run: |
-          echo "on-failure step 1 is run!"
+  #     - name: Checkout repo code
+  #       uses: actions/checkout@v3
+  #     - run: echo "The repo has been cloned!!!, see contents of dir"
+  #     - name: List dir files
+  #       run: |
+  #         ls ${{ github.workspace }}
+  #     - run: echo "setting up my environment!"
+  #     - name: setup environment in node.js version ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16.x
+  #     - run: echo "installing deps"
+  #     - name: dependency installation - clean install
+  #       run: npm ci
+  #     - run: echo "We can test your code"
+  #     - name: Running a test in jest
+  #       run: |
+  #         npm run test
+  #     - name: "Running a failing test in jest"
+  #       # continue-on-error: true
+  #       run: |
+  #         npm run test:fail
+  #     - name: Cleanup
+  #       if: ${{ failure() }}
+  #       run: |
+  #         echo "Run cleanup"
+  #     - name: Show job status
+  #       if: ${{ always() }}
+  #       run: |
+  #         echo "Job(1)'s status is ${{ job.status }}"
 
-  on-success:
-    if: ${{ success() }}
-    runs-on: ubuntu-latest
-    needs: preliminary
-    steps:
-      - name: "on-success step 1!!"
-        run: |
-          echo "on-success step 1 is run !"
+  # on-failure:
+  #   if: ${{ failure() }}
+  #   runs-on: ubuntu-latest
+  #   needs: preliminary
+  #   steps:
+  #     - name: "on-failure step 1!!"
+  #       run: |
+  #         echo "on-failure step 1 is run!"
+
+  # on-success:
+  #   if: ${{ success() }}
+  #   runs-on: ubuntu-latest
+  #   needs: preliminary
+  #   steps:
+  #     - name: "on-success step 1!!"
+  #       run: |
+  #         echo "on-success step 1 is run !"
