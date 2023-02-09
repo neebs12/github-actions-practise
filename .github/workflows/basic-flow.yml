@@ -17,4 +17,7 @@ jobs:
       - name: Running a test in jest
         run: |
           npm run test
+      - name: "Running a failing test in jest"
+        run: |
+          npm run test:fail
       - run: echo "Job(1)'s status is ${{ job.status }}"
