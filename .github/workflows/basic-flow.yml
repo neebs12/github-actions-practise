@@ -7,15 +7,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Starting my first job!!, running ${{ runner.os }}"
-      - name: using a private action
-        uses: ./.github/actions/private-action1
-        with:
-          my-variable: jaszoon232
       - name: using a remote action
         uses: neebs12/github-actions-practise-2@main
         with:
           who-to-greet: I am not a cat
+      - run: echo "Starting my first job!!, running ${{ runner.os }}"
+      - name: setting up environment (checking out repo)
+        uses: actions/checkout@v3
+        run: |
+          ls ${{ github.workspace }}
+      - name: using a private action
+        uses: ./.github/actions/private-action1
+        with:
+          my-variable: jaszoon232
 
   #     - name: Checkout repo code
   #       uses: actions/checkout@v3
