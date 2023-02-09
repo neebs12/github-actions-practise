@@ -1,0 +1,13 @@
+name: "Private Action 1"
+description: "This is my example of a private action"
+inputs:
+  my-variable: # id of input, this is the variable referenced by other files
+    description: "This is my example of my own variable"
+    required: true
+    default: "Hello World" # if none is provided for this variable
+outputs:
+  time: # id of output
+    description: "The time ... I used a private action!!"
+runs:
+  using: "node16"
+  main: "index.js"

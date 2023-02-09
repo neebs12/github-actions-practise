@@ -8,6 +8,10 @@ jobs:
 
     steps:
       - run: echo "Starting my first job!!, running ${{ runner.os }}"
+      - name: using a private action
+        uses: ./.github/actions/private-action1
+        with:
+          my-variable: jaszoon232
       - name: using a remote action
         uses: neebs12/github-actions-practise-2@main
         with:
