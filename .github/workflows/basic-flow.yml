@@ -14,7 +14,7 @@ jobs:
       - run: echo "Starting my first job!!, running ${{ runner.os }}"
       - name: setting up environment (checking out repo)
         uses: actions/checkout@v3
-        run: |
+      - run: |
           ls ${{ github.workspace }}
       - name: using a private action
         uses: ./.github/actions/private-action1
