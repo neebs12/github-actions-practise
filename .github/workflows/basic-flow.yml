@@ -29,11 +29,11 @@ jobs:
       - name: "Running a failing test in jest"
         run: |
           npm run test:fail
-      - name: "do not do this step if failed"
-        run: echo "this step is run if there is not failure"
       - name: "do this step even if there is a failure"
         continue-on-error: true
         run: echo "this step is run **regardless**"
+      - name: "do not do this step if failed"
+        run: echo "this step is run if there is not failure"
       - run: echo "Job(1)'s status is ${{ job.status }}"
 
   # on-failure:
