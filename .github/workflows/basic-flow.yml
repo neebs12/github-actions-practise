@@ -5,6 +5,11 @@ on: [push]
 jobs:
   job1:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+
     steps:
       - run: echo "Starting my first job!!, running ${{ runner.os }}"
       - name: Checkout repo code
@@ -13,6 +18,14 @@ jobs:
       - name: List dir files
         run: |
           ls ${{ github.workspace }}
+      - run: echo "setting up my environment!"
+      - name: setup environment in node.js version ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: echo "installing deps"
+      - name: dependency installation - clean install
+        run: npm ci
       - run: echo "We can test your code"
       - name: Running a test in jest
         run: |
