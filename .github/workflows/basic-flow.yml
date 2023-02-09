@@ -3,12 +3,8 @@ run-name: ${{github.actor}} is discovering Github Actions!!
 
 on: [push]
 jobs:
-  job1:
+  preliminary:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
 
     steps:
       - run: echo "Starting my first job!!, running ${{ runner.os }}"
@@ -22,7 +18,7 @@ jobs:
       - name: setup environment in node.js version ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16.x
       - run: echo "installing deps"
       - name: dependency installation - clean install
         run: npm ci
@@ -33,4 +29,18 @@ jobs:
       - name: "Running a failing test in jest"
         run: |
           npm run test:fail
+      - name: "do not do this step if failed"
+        run: echo "this step is run if there is not failure"
+      - name: "do this step even if there is a failure"
+        continue-on-error: true
+        run: echo "this step is run **regardless**"
       - run: echo "Job(1)'s status is ${{ job.status }}"
+
+  # on-failure:
+  #   if: ${{  }}
+  #   runs-on: unbuntu-latest
+  #   needs: preliminary
+  #   steps:
+  #     - name: "on-failure step 1!!"
+  #       run: |
+  #         echo "on-failure step 1 is run!"
