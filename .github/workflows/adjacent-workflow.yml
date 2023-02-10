@@ -1,0 +1,23 @@
+name: My Adjacent workflow!!
+
+on:
+  workflow_call:
+    inputs:
+      foo:
+        description: string, foo'd
+        required: true
+        type: string
+      bar:
+        description: string, foo'd
+        required: true
+        type: string
+
+jobs:
+  my-adj-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: display the input strings
+        run: |
+          echo "foo string is ${{ inputs.foo }}"
+          echo "bar string is ${{ inputs.bar }}"

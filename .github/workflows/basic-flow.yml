@@ -23,6 +23,11 @@ jobs:
         uses: ./.github/actions/private-action1
         with:
           my-variable: jaszoon232 - local && privately
+      - name: using an adjacent workflow... remotely
+        uses: neebs12/github-actions-practise/.github/workflows/adjacent-workflow.yml@github-actions-test
+        with:
+          foo: foo remotely!
+          bar: bar remotely!
 
   #     - name: Checkout repo code
   #       uses: actions/checkout@v3
