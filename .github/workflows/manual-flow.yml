@@ -1,11 +1,6 @@
 name: Manual-Flow-Test!
 
-on:
-  workflow_dispatch:
-    inputs:
-      message:
-        description: This is the message for the workflow dispatch event.
-        required: true
+on: workflow_dispatch
 
 jobs:
   job-1:
