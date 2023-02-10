@@ -7,10 +7,10 @@ on:
   issues:
     types: [opened, edited, closed]
   workflow_dispatch:
-    inputs:
-      message:
-        description: this is my workflow dispatch message
-        required: true
+    # inputs:
+    #   message:
+    #     description: this is my workflow dispatch message
+    #     required: true
 
 jobs:
   preliminary:
