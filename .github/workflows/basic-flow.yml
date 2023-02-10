@@ -4,7 +4,7 @@ run-name: ${{github.actor}} is discovering Github Actions!!
 on:
   # assuming this is generalized `push`, `issues`, `workflow_dispatch`
   # push:
-  # issues:
+  issues:
   workflow_dispatch:
     inputs:
       message:
