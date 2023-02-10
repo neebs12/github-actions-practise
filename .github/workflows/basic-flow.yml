@@ -6,6 +6,10 @@ on:
   push:
   issues:
   workflow_dispatch:
+    inputs:
+      message:
+        description: this is my workflow dispatch message
+        required: true
 
 jobs:
   preliminary:
