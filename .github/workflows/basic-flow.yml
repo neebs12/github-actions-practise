@@ -1,7 +1,12 @@
-name: My First Flow
+name: My-Main-Flow 🏊‍♂️🌊🏊‍♂️
 run-name: ${{github.actor}} is discovering Github Actions!!
 
-on: [push]
+on:
+  # assuming this is generalized `push`, `issues`, `workflow_dispatch`
+  push:
+  issues:
+  workflow_dispatch:
+
 jobs:
   preliminary:
     runs-on: ubuntu-latest
