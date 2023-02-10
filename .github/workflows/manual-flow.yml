@@ -1,0 +1,12 @@
+name: Manual-Flow-Test!
+
+on: workflow_dispatch
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: only step
+        run: |
+          echo "hello world! from manual flow test!"
